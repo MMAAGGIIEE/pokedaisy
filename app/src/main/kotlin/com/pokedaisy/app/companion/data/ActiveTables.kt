@@ -27,13 +27,14 @@ package com.pokedaisy.app.companion.data
 // ROM-extracted tables (*Hns.kt / *Lazarus.kt, scripts/gen_expansion_tables.py).
 enum class GameKind { FIRERED, EMERALD, UNBOUND, GAIA, RADICAL_RED, ODYSSEY, HEART_AND_SOUL, LAZARUS, ROWE, EMERALD_ROGUE, AMETHYST, EMERALD_SEAGLASS, CELIA, TMT2, SOULGOLD, YELLOW, GLAZED, IMPERIUM, QUETZAL, ORANGE_ISLANDS, RECHARGED_YELLOW, MARIOMON, SWORD_SHIELD, GS_CHRONICLES, CRYSTAL, CRYSTAL_CLEAR, PRISM,
     GOLD, SILVER, RED, BLUE, ELITE_REDUX, POLISHED_CRYSTAL, PLATINUM, HEARTGOLD, SOULSILVER, TEAM_ROCKET, BLACK,
-    WISHES, PURE_RED, PURE_BLUE, DREAMSTONE }
+    WISHES, PURE_RED, PURE_BLUE, DREAMSTONE, QHMY }
 
 @Volatile
 var activeGame: GameKind = GameKind.FIRERED
 
 private inline val unbound get() = activeGame == GameKind.UNBOUND
 private inline val emerald get() = activeGame == GameKind.EMERALD
+private inline val qhmy get() = activeGame == GameKind.QHMY
 
 /** The running ROM's language letter (its game code's last: BPE<S|D|F|I|J>); 'E' for English
  * and everything else. Set with [activeGame] by the Poller. */
@@ -244,6 +245,7 @@ var eliteRedux265_3 = false
 
 
 val activeSpeciesNames: Map<Int, String> get() = localText?.species ?: when {
+    qhmy -> speciesNamesQhmy
     black -> NdsArt.names?.speciesMerged ?: speciesNamesBlack
     gen4 -> NdsArt.names?.speciesMerged ?: speciesNamesPlatinum   // the cart's own words (GitHub #230)
     pureRgb -> speciesNamesPureRgb
@@ -281,6 +283,7 @@ val activeSpeciesNames: Map<Int, String> get() = localText?.species ?: when {
     else -> frHack?.speciesMerged ?: speciesNames
 }
 val activeMoveData: Map<Int, MoveInfo> get() = localText?.moveData ?: when {
+    qhmy -> moveDataQhmy
     black -> NdsArt.names?.movesMerged ?: moveDataBlack
     gen4 -> NdsArt.names?.movesMerged ?: moveDataPlatinum
     pureRgb -> moveDataPureRgb
@@ -315,6 +318,7 @@ val activeMoveData: Map<Int, MoveInfo> get() = localText?.moveData ?: when {
     else -> frHack?.movesMerged ?: moveData
 }
 val activeItemNames: Map<Int, String> get() = localText?.items ?: when {
+    qhmy -> itemNamesQhmy
     black -> NdsArt.names?.itemsMerged(false) ?: itemNamesBlack
     heartGold -> NdsArt.names?.itemsMerged(true) ?: itemNamesHeartGold
     platinum -> NdsArt.names?.itemsMerged(false) ?: itemNamesPlatinum
@@ -352,6 +356,7 @@ val activeItemNames: Map<Int, String> get() = localText?.items ?: when {
     else -> frHack?.itemsMerged ?: itemNames
 }
 val activeSpeciesTypeData: Map<Int, SpeciesTypes> get() = when {
+    qhmy -> speciesTypeDataQhmy
     black -> speciesTypesBlack
     gen4 -> speciesTypesPlatinum
     pureRgb -> speciesTypeDataPureRgb
@@ -454,6 +459,7 @@ val activeMapSecData: Map<Int, MapSecInfo> get() = localText?.mapSecData ?: when
     goldSilver -> mapSecDataGoldSilver
     crystal -> mapSecDataCrystal
     unbound -> mapSecDataUnbound
+    qhmy -> mapSecDataQhmy
     // Seaglass keeps vanilla Hoenn mapsec ids (0x00 = Littleroot, confirmed live).
     emerald || seaglass || tmt2 -> mapSecDataEmerald
     // Own regions' names, text-only (no region-map image yet).
@@ -577,7 +583,7 @@ val activeRegionMapImages: Array<String> get() = when {
     seaglass -> regionMapImagesSeaglass
     // Recharged Emerald's own Hoenn (RomArt's RE_REGION_*), on Emerald's layout: Emerald's boxes and cursor grid.
     emerald && runningEmeraldHack != null -> regionMapImagesRechargedEmerald
-    emerald || tmt2 || eliteRedux -> regionMapImagesEmerald
+    emerald || qhmy || tmt2 || eliteRedux -> regionMapImagesEmerald
     hns -> regionMapImagesHns
     lazarus -> regionMapImagesLazarus
     soulGold -> regionMapImagesSoulGold
@@ -660,6 +666,7 @@ fun GameKind.displayName(): String = when (this) {
     GameKind.TEAM_ROCKET -> "Pokémon Team Rocket Edition: Dragonsden Version"
     GameKind.WISHES -> "Pokémon Wishes of Tomorrow"
     GameKind.DREAMSTONE -> "Pokémon Dreamstone Mysteries"
+    GameKind.QHMY -> "口袋妖怪 漆黑的魅影 5.0EX+ BW"
     GameKind.RECHARGED_YELLOW -> "Pokémon Recharged Yellow"
     GameKind.MARIOMON -> "Super Mariomon"
     GameKind.CRYSTAL -> "Pokémon Crystal"

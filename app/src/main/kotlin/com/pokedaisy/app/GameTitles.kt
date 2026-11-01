@@ -140,6 +140,7 @@ object GameTitles {
         "831fe0f97301f17b24a9cd4a64ef0520835c4dde" to "Super Mariomon",
         "06e79d12afa578db97c23c1f7ba771fe2f8fe905" to "Super Mariomon",
         "25f8840ecb58e584edf18ffde35f845e94f3f17c" to "Pokémon GS Chronicles",
+        "8b6635599c1c78d68e63b97a68efb75e08ebcc59" to "口袋妖怪 漆黑的魅影 5.0EX+ BW",
         // Crystal Clear: v2.5.11 and v2.6.0, each in Standard Colors and Color Filter.
         "a1c4da6b0057c98fe4ebea45d6812a484fc69abd" to "Pokémon Crystal Clear",
         "6fc677bf7a9db103cb9ee11ac08d26782e69ae41" to "Pokémon Crystal Clear",

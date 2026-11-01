@@ -187,6 +187,18 @@ val NATIVE_EMERALD_RETAIL = NATIVE_EMERALD.copy(
     monToSwitchIntoOff = 0x5C,
 )
 
+// 漆黑的魅影 5.0EX+ BW (BPEE, 32 MB, sha1 8b663559…): all 18 retail RAM globals
+// occur in its literal pools; its public cheat addresses independently confirm the
+// retail party layout. Its icon and item tables also keep retail's addresses.
+// Dex/guide/item prose use different ROM tables and per-table Chinese encodings,
+// so leave those off until their own readers are mapped instead of decoding garbage.
+val NATIVE_QHMY_5_0_EX_PLUS = NATIVE_EMERALD_RETAIL.copy(
+    itemDescs = null,
+    trainerCard = null,
+    pokedex = null,
+    guideTables = null,
+)
+
 // The European Emerald releases (BPES / BPED / BPEF / BPEI): every RAM address
 // is English's (literal pools matched in each ROM; English's save loads in all
 // four with the same party bytes, money and position - headless, the

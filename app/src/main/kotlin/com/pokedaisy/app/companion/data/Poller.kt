@@ -510,6 +510,7 @@ class TelemetrySampler {
         if (code == "BPEE" && size > 0x1000000L) {
             val hash = runCatching { romHash(reader, size) }.getOrNull()
             when (hash) {
+                QHMY_5_0_EX_PLUS_SHA1 -> { kind = GameKind.QHMY; nativeCfg = NATIVE_QHMY_5_0_EX_PLUS }
                 HEART_AND_SOUL_V2_0_6_SHA1 -> { kind = GameKind.HEART_AND_SOUL; nativeCfg = NATIVE_HEART_AND_SOUL }
                 LAZARUS_V2_0_SHA1 -> { kind = GameKind.LAZARUS; nativeCfg = NATIVE_LAZARUS }
                 ROWE_V2_1_9_1_SHA1 -> { kind = GameKind.ROWE; nativeCfg = NATIVE_ROWE }
@@ -894,6 +895,8 @@ class TelemetrySampler {
         const val SWORD_SHIELD_ULTIMATE_PLUS_V1_2_1_2_CASUAL_PERFORMANCE_SHA1 = "932323d1fa3732d8673d1319fa86ed4df41087b9"
         // Pokémon GS Chronicles v2.7.6 (BPRE, 32 MB, CFRU; Ruki Studios) - host-side masked hash (GPIO bytes zero).
         const val GS_CHRONICLES_V2_7_6_SHA1 = "25f8840ecb58e584edf18ffde35f845e94f3f17c"
+        // 口袋妖怪 漆黑的魅影 5.0EX+ BW (BPEE, 32 MB) - masked/file SHA-1 (its GPIO bytes are static).
+        const val QHMY_5_0_EX_PLUS_SHA1 = "8b6635599c1c78d68e63b97a68efb75e08ebcc59"
 
         // Pokémon FireRed Rocket Edition (BPRE rev 0, 16 MB; no version on it) - host-side masked hash (GPIO bytes zero).
         const val FIRERED_ROCKET_EDITION_UNVERSIONED_SHA1 = "033d05374ae34eb84fae62c693ca8f3da23dd1bd"
@@ -1106,7 +1109,7 @@ class TelemetrySampler {
             RECHARGED_EMERALD_V2_2_5_SHA1, RECHARGED_EMERALD_V2_2_8_SHA1, RECHARGED_EMERALD_REBALANCED_V2_2_8_SHA1,
             MARIOMON_V1_2_1_SHA1, MARIOMON_V1_2_2_SHA1, MARIOMON_V1_3_SHA1, MARIOMON_V1_5_1_Anniversary_SHA1,
             MARIOMON_V1_5_2_Anniversary_SHA1,
-            GS_CHRONICLES_V2_7_6_SHA1,
+            GS_CHRONICLES_V2_7_6_SHA1, QHMY_5_0_EX_PLUS_SHA1,
         )
     }
 }

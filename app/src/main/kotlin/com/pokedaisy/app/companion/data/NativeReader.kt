@@ -701,6 +701,7 @@ private fun Mon.withNativeGender(raw: ByteArray, off: Int, layout: PartyMonLayou
         // Recharged Yellow (gen_recharged_yellow_tables.py checks its gBaseStats against FireRed's).
         GameKind.FIRERED -> runningFireRedHack?.genderRatios ?: genderRatiosFireRed
         GameKind.EMERALD, GameKind.RECHARGED_YELLOW -> genderRatiosFireRed
+        GameKind.QHMY -> genderRatiosRadicalRed + genderRatiosQhmy
         GameKind.UNBOUND -> genderRatiosUnbound
         GameKind.RADICAL_RED -> genderRatiosRadicalRed
         GameKind.ODYSSEY -> genderRatiosOdyssey

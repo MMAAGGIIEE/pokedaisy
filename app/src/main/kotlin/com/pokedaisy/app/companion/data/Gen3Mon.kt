@@ -275,6 +275,9 @@ internal fun shinyValue(personality: Long, otId: Long): Int =
  * or a byte the table doesn't know.
  */
 internal fun gen3Nickname(raw: ByteArray, off: Int, layout: PartyMonLayout): String? {
+    // 漆黑的魅影 uses separate Chinese glyph maps per table; the Western decoder would
+    // show mojibake. Until its nickname map is mapped, the UI falls back to the Chinese species name.
+    if (activeGame == GameKind.QHMY) return null
     if (layout.language >= 0) {
         val japanese = (raw[off + layout.language].toInt() and 0xFF) == 1
         if (japanese != (romLanguage == 'J')) return null

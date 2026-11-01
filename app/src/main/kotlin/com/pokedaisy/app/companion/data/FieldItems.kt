@@ -470,6 +470,7 @@ private fun fieldItemsByKind(kind: GameKind?, gameCode: String, revision: Int): 
     GameKind.AMETHYST -> cfru(0x0872DB0CL)
     GameKind.SWORD_SHIELD -> cfru(0x093C0000L, unholdablePockets = setOf(4))
     GameKind.GS_CHRONICLES -> cfru(0x08F70000L)
+    GameKind.QHMY -> fieldItemsFor(gameCode, revision)
     GameKind.FIRERED -> if (gameCode == "PUVV") FIELD_ITEMS_PORTS["BPRE0"] else fieldItemsFor(gameCode, revision)
     // Emerald Kaizo: retail's FLY code, but its map reload crashed when the game's ReturnToField came straight from the
     // field (headless, on retail's save: the first flight, or the fourth once the overworld's windows were freed first),

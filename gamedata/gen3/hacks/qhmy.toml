@@ -1,0 +1,13 @@
+# Gen 3 configs (hacks). The format and the commands: gamedata/README.md.
+
+# 漆黑的魅影 5.0EX+ BW (BPEE, 32 MB, sha1 8b663559…): all 18 retail RAM globals
+# occur in its literal pools; public cheat addresses independently confirm the
+# retail party layout. Its icon and item tables also keep retail's addresses.
+# Dex/guide/item prose use different ROM tables and per-table Chinese encodings,
+# so leave those off until their own readers are mapped instead of decoding garbage.
+[config.qhmy_5_0_ex_plus]
+base = 'emerald_retail'
+itemDescs = 'none'
+trainerCard = 'none'
+pokedex = 'none'
+guideTables = 'none'

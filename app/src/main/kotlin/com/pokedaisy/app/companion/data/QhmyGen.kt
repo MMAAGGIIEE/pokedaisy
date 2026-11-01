@@ -2,7 +2,7 @@
 package com.pokedaisy.app.companion.data
 
 /** National-Dex ids, Simplified Chinese. */
-internal val speciesNamesQhmy: Map<Int, String> = mapOf(
+internal val speciesNamesQhmy: Map<Int, String> by lazy { mapOf(
     1 to "妙蛙种子",
     2 to "妙蛙草",
     3 to "妙蛙花",
@@ -652,9 +652,9 @@ internal val speciesNamesQhmy: Map<Int, String> = mapOf(
     647 to "凯路迪欧",
     648 to "美洛耶塔",
     649 to "盖诺赛克特",
-)
+) }
 
-internal val moveDataQhmy: Map<Int, MoveInfo> = mapOf(
+internal val moveDataQhmy: Map<Int, MoveInfo> by lazy { mapOf(
     1 to MoveInfo("拍击", 0, 40),
     2 to MoveInfo("空手劈", 1, 50),
     3 to MoveInfo("连环巴掌", 0, 15),
@@ -1214,9 +1214,9 @@ internal val moveDataQhmy: Map<Int, MoveInfo> = mapOf(
     557 to MoveInfo("Ｖ热焰", 0, 0),
     558 to MoveInfo("交错火焰", 0, 0),
     559 to MoveInfo("交错闪电", 0, 0),
-)
+) }
 
-internal val itemNamesQhmy: Map<Int, String> = mapOf(
+internal val itemNamesQhmy: Map<Int, String> by lazy { mapOf(
     1 to "大师球",
     2 to "高级球",
     3 to "超级球",
@@ -1524,10 +1524,10 @@ internal val itemNamesQhmy: Map<Int, String> = mapOf(
     372 to "粉末收集瓶",
     373 to "红宝石",
     374 to "蓝宝石",
-)
+) }
 
 /** Gen 1-3 from this ROM gBaseStats; Gen 4-5 from the national-dex reference (its retail-sized table ends there). */
-internal val speciesTypeDataQhmy: Map<Int, SpeciesTypes> = mapOf(
+internal val speciesTypeDataQhmy: Map<Int, SpeciesTypes> by lazy { mapOf(
     1 to SpeciesTypes(12, 3),
     2 to SpeciesTypes(12, 3),
     3 to SpeciesTypes(12, 3),
@@ -2177,4 +2177,4 @@ internal val speciesTypeDataQhmy: Map<Int, SpeciesTypes> = mapOf(
     647 to SpeciesTypes(11, 1),
     648 to SpeciesTypes(0, 14),
     649 to SpeciesTypes(6, 8),
-)
+) }

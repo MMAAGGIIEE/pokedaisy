@@ -20,5 +20,8 @@ val guideTranslations: Map<String, Tr> by lazy {
 }
 
 /** [english] in the language on screen when a guide table has it, else as it is. */
-fun trGuide(english: String): String =
-    if (L10n.language == AppLanguage.EN) english else guideTranslations[english]?.of(L10n.language) ?: english
+fun trGuide(english: String): String {
+    if (L10n.language == AppLanguage.ZH) ZhDict.lookup(english)?.let { return it }
+    if (L10n.language == AppLanguage.EN) return english
+    return guideTranslations[english]?.of(L10n.language) ?: english
+}

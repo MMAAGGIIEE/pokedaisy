@@ -30,6 +30,9 @@ enum class AppLanguage(val code: String, val romLetter: Char?, val locale: Strin
     // (GitHub #61). Brazil's is the official games' Portuguese; Portugal's keeps those game words, its own everyday ones.
     BR("BR", null, "pt-BR", "PORTUGUÊS (BR)"),
     PT("PT", null, "pt", "PORTUGUÊS (PT)"),
+    // Chinese is the same kind: no Gen 3 game came out in it, the device language or the LANGUAGE row picks it.
+    // Its text doesn't live in [Tr] - [ZhDict] has it, and tr()/trGuide() ask it first.
+    ZH("ZH", null, "zh", "中文"),
     ;
 
     companion object {
@@ -66,6 +69,7 @@ data class Tr(
         AppLanguage.ES -> es
         AppLanguage.BR -> br
         AppLanguage.PT -> pt
+        AppLanguage.ZH -> null // Chinese is ZhDict's, not this table's
     }
 }
 
@@ -127,6 +131,7 @@ val translations: Map<String, Tr> by lazy { allTranslationTables().fold(emptyMap
 /** [en] in the current language (or [en] itself where there's no translation). */
 fun tr(en: String): String {
     val lang = L10n.language
+    if (lang == AppLanguage.ZH) ZhDict.lookup(en)?.let { return it }
     if (lang != AppLanguage.EN) translations[en]?.of(lang)?.let { return it }
     return en.substringBefore('|')
 }

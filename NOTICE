@@ -59,7 +59,11 @@ The app shows every license below in full under Settings > LICENSES.
   License 1.1 (app/src/main/assets/fonts/LICENSE-AtkinsonHyperlegible.txt).
 - PixelMplus10 (app/src/main/assets/fonts/PixelMplusJP.ttf), by itouhiro,
   M+ FONT LICENSE (app/src/main/assets/fonts/LICENSE-PixelMplus.txt); cut to
-  Japanese and rescaled by scripts/gen_jp_font.py.
+  Japanese and rescaled by scripts/gen_jp_font.py, then merged with Fusion
+  Pixel Font (see below) for full Chinese coverage.
+- Fusion Pixel Font (merged into app/src/main/assets/fonts/PixelMplusJP.ttf),
+  by TakWolf, SIL Open Font License 1.1
+  (app/src/main/assets/fonts/LICENSE-FusionPixel.txt).
 - PokeAPI (https://pokeapi.co), BSD 3-Clause: the National Dex species list
   (third_party/licenses/PokeAPI-BSD-3-Clause.txt).
 - AndroidX, Jetpack Compose, Kotlin, kotlinx.coroutines and Apache Commons
